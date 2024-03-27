@@ -5,17 +5,17 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# If modifying these scopes, delete the file token.json.
+
 SCOPES = ["https://www.googleapis.com/auth/contacts"]
 
 CREDENTIALS_FILE_PATH = r'/home/ken/Desktop/bilaltest/contactsmanager/api/credentials.json'
-# CREDENTIALS_FILE_PATH = r'/credentials.json'
+
 
 def create_new_contact(first_name, phone_number, job_title, company, email, city, primaryNumberCC):
   creds = None
   if os.path.exists("token.json"):
     creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-  # If there are no (valid) credentials available, let the user log in.
+  
   if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
       creds.refresh(Request())
@@ -24,7 +24,6 @@ def create_new_contact(first_name, phone_number, job_title, company, email, city
           CREDENTIALS_FILE_PATH, SCOPES
       )
       creds = flow.run_local_server(port=0)
-    # Save the credentials for the next run
     with open("token.json", "w") as token:
       token.write(creds.to_json())
 

@@ -1,5 +1,12 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+apikey = os.getenv("APIKEY")
+
 config = {
-    "apiKey": "AIzaSyCswKTdGAIb3gqvsSMig2pdhDZtYOUMpKs",
+    "apiKey": apikey,
     "authDomain": "pythonapi-c0178.firebaseapp.com",
     "databaseURL": "https://pythonapi-c0178-default-rtdb.asia-southeast1.firebasedatabase.app",
     "projectId": "pythonapi-c0178",
